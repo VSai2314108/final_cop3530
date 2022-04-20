@@ -1,0 +1,64 @@
+.hero {
+  height: 100vh;
+  width: 100%;
+  background-image: url(sky.jpg);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow-x: hidden;
+  left: -1px;
+  top: -1px;
+  bottom: -1px;
+  position: fixed;
+  right: -1px;
+  background: /* top, transparent black, faked with gradient */
+  linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+}
+
+.highway {
+  height: 200px;
+  width: 500%;
+  display: block;
+  background-image: url(road.jpg);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-repeat: repeat-x;
+  animation: highway 5s linear infinite;
+}
+
+@keyframes highway {
+  100% {
+      transform: translateX(-3400px);
+  }
+}
+
+.city {
+  height: 200px;
+  width: 500%;
+  background-image: url(city.png);
+  position: absolute;
+  bottom: 200px;
+  left: 0;
+  right: 0;
+  display: block;
+  z-index: 1;
+  background-repeat: repeat-x;
+  animation: city 20s linear infinite;
+}
+
+@keyframes city {
+  100% {
+      transform: translateX(-1400px);
+  }
+}
+
+.car {
+  width: 400px;
+  left: 50%;
+  bottom: 100px;
+  transform: translateX(-50%);
+  position: absolute;
+}
