@@ -20,18 +20,17 @@
   width: 500%;
   display: block;
   background-image: url(road.jpg);
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 1;
   background-repeat: repeat-x;
   animation: highway 5s linear infinite;
 }
 
 @keyframes highway {
   100% {
-      transform: translateX(-3400px);
+    transform: translateX(-5139px);
   }
 }
 
@@ -39,7 +38,7 @@
   height: 200px;
   width: 500%;
   background-image: url(city.png);
-  position: absolute;
+  position: fixed;
   bottom: 200px;
   left: 0;
   right: 0;
@@ -60,8 +59,8 @@
   left: 50%;
   bottom: 100px;
   transform: translateX(-50%);
-  position: absolute;
   z-index:2;
+  position: fixed;
 }
 
 .car img {
@@ -86,7 +85,6 @@
   bottom: 178px;
   transform: translateX(-50%);
   position: absolute;
-  z-index: 2;
 }
 
 .wheel img {
@@ -117,7 +115,6 @@
   text-align: center;
   font-family: "Lucida Console", "Courier New", monospace;
   color: white;
-  z-index: 3
 }
 
 .Title {
@@ -130,6 +127,8 @@
 .Vin {
   font: inherit;
   font-size: calc(5px + 2vmin);
+  overflow: scroll;
+  z-index: 3;
 }
 
 .App-link {

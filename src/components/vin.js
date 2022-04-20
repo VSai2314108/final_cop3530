@@ -2,6 +2,7 @@ import './Vin.css';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import React from 'react';
+import {Collapse} from 'react-collapse'
 //5UXWX7C5*BA
 
 function Vin() {
@@ -110,14 +111,19 @@ function Vin() {
                 <img src={require("./wheel.png")} className="front-wheel" alt={"wheel2"}/>
             </div>
         </div>
-        
         <div className="App">
             <header className="App-header">
-                <p className="Title">
+                <h1 className="Title">
                     Car Information Analyzer
-                </p>
-                <p>{mode}</p>
-                <div>
+                </h1>
+                <p>Data Structure: {mode}</p>
+                <label className="Vin"> Enter Your Vin: </label>
+                  <input className="inputText" type="text" onChange={getIn} value={userValue} />
+                  <button title="submit" onClick={(event)=>[uval()]}>Submit</button>
+                <p></p>
+                <button title="EL" onClick={(event)=>{setMode("EdgeList")}}>EdgeList</button>
+                <button title="AL" onClick={(event)=>{setMode("AdjacencyList")}}>AdjacencyList</button>
+                <div className="pg">
                     <strong>
                     <p style={{textTransform: 'lowercase'}}>
                       HI! YOUR CAR IS A {final['Make']} {final['Model']} FROM {final['Model Year']} AND IS TRADITIONALLY USED AS A {final['Vehicle Type']}. 
@@ -127,19 +133,14 @@ function Vin() {
                     </strong>
                 </div>
                 {Object.entries(out).map(([key, value]) => (
-                  <div key={key}><strong>{key}</strong>: <div>{value}</div></div>
+                    <div key={key}><strong>{key}</strong>: <Collapse isOpened={true}><div>{value}</div> </Collapse></div>
                   ))
                 }
                 <a className="App-link" href="https://vpic.nhtsa.dot.gov/api/" target="_blank" rel="noopener noreferrer">
                     Data Source
                 </a>
                 <br /><br />
-                <label className="Vin"> Enter Your Vin:
-                    <input type="text" onChange={getIn} value={userValue} />
-                    <button title="submit" onClick={(event)=>[uval()]}>Submit</button>
-                </label>
-                <button title="EL" onClick={(event)=>{setMode("EdgeList")}}>EdgeList</button>
-                <button title="AL" onClick={(event)=>{setMode("AdjacencyList")}}>AdjacencyList</button>
+                
           </header>
         </div>
       </div>
@@ -160,14 +161,20 @@ function Vin() {
         </div>
         <div className="App">
             <header className="App-header">
-                <p className="Title">
+                <h1 className="Title">
                     Car Information Analyzer
-                </p>
-                <p>{mode}</p>
-                <div>
+                </h1>
+                <p>Data Structure: {mode}</p>
+                <label className="Vin"> Enter Your Vin:
+                    <input type="text" onChange={getIn} value={userValue} />
+                    <button title="submit" onClick={(event)=>[uval()]}>Submit</button>
+                </label>
+                <button title="EL" onClick={(event)=>{setMode("EdgeList")}}>EdgeList</button>
+                <button title="AL" onClick={(event)=>{setMode("AdjacencyList")}}>AdjacencyList</button>
+                <div className="pg" >
                     <strong>
                     <p style={{textTransform: 'lowercase'}}>
-                     WAITING FOR VALID VIN
+                     Waiting For Valid VIN
                     </p>
                     </strong>
                 </div>
@@ -175,12 +182,8 @@ function Vin() {
                     Data Source
                 </a>
                 <br /><br />
-                <label className="Vin"> Enter Your Vin:
-                    <input type="text" onChange={getIn} value={userValue} />
-                    <button title="submit" onClick={(event)=>[uval()]}>Submit</button>
-                </label>
-                <button title="EL" onClick={(event)=>{setMode("EdgeList")}}>EdgeList</button>
-                <button title="AL" onClick={(event)=>{setMode("AdjacencyList")}}>AdjacencyList</button>
+                
+                
           </header>
         </div>
       </div>
