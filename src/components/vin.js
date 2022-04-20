@@ -2,7 +2,6 @@ import './Vin.css';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import React from 'react';
-
 //5UXWX7C5*BA
 
 function Vin() {
@@ -105,10 +104,10 @@ function Vin() {
         <div className="highway"></div>
         <div className="city"></div>
         <div className="car">
-            <img src="car.png" alt="car"/>
+            <img src={require("./car.png")} alt={"car"}/>
             <div className="wheel">
-                <img src="wheel.png" className="back-wheel" alt="wheel"/>
-                <img src="wheel.png" className="front-wheel" alt="wheel2"/>
+                <img src={require("./wheel.png")} className="back-wheel" alt={"wheel"}/>
+                <img src={require("./wheel.png")} className="front-wheel" alt={"wheel2"}/>
             </div>
         </div>
         
@@ -150,16 +149,15 @@ function Vin() {
     {
       return (
         <div className="hero">
-        <div className="highway"></div>
+         <div className="highway"></div>
         <div className="city"></div>
         <div className="car">
-            <img src="car.png" alt="car"/>
+            <img src={require("./car.png")} alt={"car"}/>
             <div className="wheel">
-                <img src="wheel.png" className="back-wheel" alt="wheel"/>
-                <img src="wheel.png" className="front-wheel" alt="wheel2"/>
+                <img src={require("./wheel.png")} className="back-wheel" alt={"wheel"}/>
+                <img src={require("./wheel.png")} className="front-wheel" alt={"wheel2"}/>
             </div>
         </div>
-        
         <div className="App">
             <header className="App-header">
                 <p className="Title">
