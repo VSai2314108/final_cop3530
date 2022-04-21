@@ -2,11 +2,11 @@ import './Vin.css';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import React from 'react';
-import {Collapse} from 'react-collapse'
 //5UXWX7C5*BA
 
 function Vin() {
-    const [mode, setMode] = useState("EdgeList")
+    const [time, setTime] = useState(0.0);
+    const [mode, setMode] = useState("Edge List")
     const [userValue, setUV] = useState("");
     const [final, setFinal] = useState([]);
     const [out, setOut] = useState("");
@@ -74,7 +74,7 @@ function Vin() {
     const getData = async (nhtsaRes) =>{
       let suffix;
       //let outval ="";
-      if(mode==="EdgeList")
+      if(mode==="Edge List")
       {
         //outval=outval+"EdgeList";
         suffix = "el/"+nhtsaRes['Plant Country']+"/"+nhtsaRes['Plant State']+"/"+nhtsaRes['Plant City']+"/"+nhtsaRes['Manufacturer Name']+"/"+nhtsaRes['Make']+"/"+nhtsaRes['Vehicle Type']+"/";
@@ -89,7 +89,8 @@ function Vin() {
       let dicout = JSON.parse(data)
       /*for(const [key, value] of Object.entries(dicout))
         outval = outval+(`${key}: ${value}`);*/
-      console.log(dicout);
+      setTime(dicout['Elapsed Time']);
+      delete dicout['Elapsed Time'];
       setOut(dicout);     
       // /<_ctry>/<_city>/<_state>/<_mfr_>/<_make>/')
       //JAPAN TSUTSUMI AICHI TOYOTA MOTOR CORPORATION TOYOTA PASSENGER CAR
@@ -116,31 +117,32 @@ function Vin() {
                 <h1 className="Title">
                     Car Information Analyzer
                 </h1>
-                <p>Data Structure: {mode}</p>
+                <strong>
                 <label className="Vin"> Enter Your Vin: </label>
                   <input className="inputText" type="text" onChange={getIn} value={userValue} />
                   <button title="submit" onClick={(event)=>[uval()]}>Submit</button>
+
                 <p></p>
-                <button title="EL" onClick={(event)=>{setMode("EdgeList")}}>EdgeList</button>
-                <button title="AL" onClick={(event)=>{setMode("AdjacencyList")}}>AdjacencyList</button>
+                <button title="EL" onClick={(event)=>{setMode("Edge List")}}>Edge List</button>
+                <button title="AL" onClick={(event)=>{setMode("Adjacency List")}}>Adjacency List</button>                  
+                <p>Data Structure: {mode}</p>
+                <p>Elapsed Time: {time} </p></strong>
+                <strong><p className="about"> About Your Car! </p></strong>
                 <div className="pg">
                     <strong>
-                    <p style={{textTransform: 'lowercase'}}>
+                    <text style={{textTransform: 'lowercase'}}>
                       HI! YOUR CAR IS A {final['Make']} {final['Model']} FROM {final['Model Year']} AND IS TRADITIONALLY USED AS A {final['Vehicle Type']}. 
                       IT IS A {final['Body Class']} WITH {final['Engine Number of Cylinders']} CYLINDERS AND DRIVES AS A {final['Drive Type']}.
                       IT WAS MADE BY {final['Manufacturer Name']} IN THE CITY OF {final['Plant City']} WHICH IS LOCATED IN {final['Plant State']}, {final['Plant Country']}.
-                    </p>
+                    </text>
                     </strong>
                 </div>
+                <strong><p className="about"> Related Information! </p></strong>
                 {Object.entries(out).map(([key, value]) => (
-                    <div key={key}><strong>{key}</strong>: <Collapse isOpened={true}><div>{value}</div> </Collapse></div>
+                    <strong><div className="vals" key={key}><div className="similiar">{key}</div>{value}</div></strong>
                   ))
                 }
-                <a className="App-link" href="https://vpic.nhtsa.dot.gov/api/" target="_blank" rel="noopener noreferrer">
-                    Data Source
-                </a>
-                <br /><br />
-                
+                <strong><a className="App-link" href="https://vpic.nhtsa.dot.gov/api/" target="_blank" rel="noopener noreferrer">Data Source</a></strong>
           </header>
         </div>
       </div>
@@ -164,27 +166,23 @@ function Vin() {
                 <h1 className="Title">
                     Car Information Analyzer
                 </h1>
-                <p>Data Structure: {mode}</p>
-                <label className="Vin"> Enter Your Vin:
-                    <input type="text" onChange={getIn} value={userValue} />
-                    <button title="submit" onClick={(event)=>[uval()]}>Submit</button>
-                </label>
-                <button title="EL" onClick={(event)=>{setMode("EdgeList")}}>EdgeList</button>
-                <button title="AL" onClick={(event)=>{setMode("AdjacencyList")}}>AdjacencyList</button>
+                <strong>
+                <label className="Vin"> Enter Your Vin: </label>
+                  <input className="inputText" type="text" onChange={getIn} value={userValue} />
+                  <button title="submit" onClick={(event)=>[uval()]}>Submit</button>
+                <p></p>
+                <button title="EL" onClick={(event)=>{setMode("Edge List")}}>Edge List</button>
+                <button title="AL" onClick={(event)=>{setMode("Adjacency List")}}>Adjacency List</button>                 
+                <p>Data Structure: {mode}</p></strong>
                 <div className="pg" >
                     <strong>
-                    <p style={{textTransform: 'lowercase'}}>
+                    <text>
                      Waiting For Valid VIN
-                    </p>
-                    </strong>
+                    </text>
+                    </strong>                
                 </div>
-                <a className="App-link" href="https://vpic.nhtsa.dot.gov/api/" target="_blank" rel="noopener noreferrer">
-                    Data Source
-                </a>
-                <br /><br />
-                
-                
-          </header>
+                <strong><a className="App-link" href="https://vpic.nhtsa.dot.gov/api/" target="_blank" rel="noopener noreferrer">Data Source</a></strong>
+            </header>
         </div>
       </div>
         );

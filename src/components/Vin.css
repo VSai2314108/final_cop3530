@@ -1,3 +1,15 @@
+/*::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, .5);
+  box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}*/
+
+
 .hero {
   height: 100vh;
   width: 100%;
@@ -115,6 +127,8 @@
   text-align: center;
   font-family: "Lucida Console", "Courier New", monospace;
   color: white;
+  overflow: scroll;
+  height: 60vh;
 }
 
 .Title {
@@ -122,6 +136,8 @@
   font-family: "Copperplate", fantasy;
   font-size: 100px;
   color: white;
+  text-shadow: 6px 6px 3px #000000;
+
 }
 
 .Vin {
@@ -132,5 +148,47 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: puple;
+  position: relative;
+  z-index: 4;
+}
+.pg{
+  font-size: 18px;
+  position: relative;
+  overflow: scroll;
+  height: 50px;
+  border: 5px solid white;
+  padding: 20px;
+  margin: 10px;
+  font-size: 16px;
+  width: 80vw;
+  margin-left: auto;
+  margin-right:auto;
+  border-radius: 25px;
+  background-image: linear-gradient(rgb(120,120,120),rgb(120,120,120));
+
+}
+.about{
+  font-size: 26px;
+  text-shadow: 3px 3px 2px #000000;
+}
+.similiar{
+  text-decoration-line: underline;
+  text-decoration-thickness: auto;
+}
+.vals{
+  position: relative;
+  overflow: scroll;
+  max-height: 300px;
+  width: 80vw;
+  border: 5px solid white;
+  padding: 20px;
+  margin-top: 25px;
+  margin-top: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 16px;
+  border-radius: 35px;
+  background-image: linear-gradient(rgb(180,180,180),rgb(180,180,180));
+
 }
